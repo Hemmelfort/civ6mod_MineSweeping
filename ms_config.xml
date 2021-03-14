@@ -71,5 +71,6 @@
     <InputActions>
         <Row ActionId="MarkPlot" Name="LOC_ACTION_MARK_PLOT_NAME" Description="LOC_ACTION_MARK_PLOT_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>
         <Row ActionId="DigPlot" Name="LOC_ACTION_DIG_PLOT_NAME" Description="LOC_ACTION_DIG_PLOT_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>
+        <Row ActionId="MSTest" Name="LOC_ACTION_MS_TEST_NAME" Description="LOC_ACTION_MS_TEST_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>
     </InputActions>
 </GameInfo>

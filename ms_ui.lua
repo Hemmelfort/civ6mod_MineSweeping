@@ -3,9 +3,16 @@ print('Mine Sweeper UI is loading.')
 
 local m_DigPlotAction = Input.GetActionId('DigPlot')
 local m_MarkPlotAction = Input.GetActionId('MarkPlot')
+local m_MSTestAction = Input.GetActionId('MSTest')
 
 local pCurPlayer
 local pCurUnit
+
+
+
+function MSTest()
+    ExposedMembers.MineSweeper.MSTest()
+end
 
 
 function DigPlot()
@@ -29,6 +36,8 @@ function OnInputActionTriggered(iActionID)
         DigPlot()
     elseif(iActionID == m_MarkPlotAction) then
         MarkPlot()
+    elseif(iActionID == m_MSTestAction) then
+        MSTest()
     end
 end
 
@@ -52,7 +61,6 @@ function OnUnitSelectionChanged(iPlayerID, iUnitID, iPlotX, iPlotY, iPlotZ, bSel
         
     end
 end
-
 
 
 Events.InputActionTriggered.Add(OnInputActionTriggered)
