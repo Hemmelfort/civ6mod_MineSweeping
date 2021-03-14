@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameInfo>
+    <RuleSets>
+        <Row>
+            <RuleSetType>RULESET_MINESWEEPER</RuleSetType>
+            <Name>LOC_SCENARIO_MINESWEEPER_NAME</Name>
+            <Description>LOC_SCENARIO_MINESWEEPER_TOOLTIP</Description>
+            <LongDescription>LOC_SCENARIO_MINESWEEPER_DESCRIPTIOIN</LongDescription>
+            <VictoryDomain>MinesweeperVictories</VictoryDomain>
+            <IsScenario>1</IsScenario>
+			<SupportsMultiPlayer>0</SupportsMultiPlayer>
+			<SupportsHotSeat>0</SupportsHotSeat>
+			<SupportsPlayByCloud>0</SupportsPlayByCloud>
+			<RequiresNoTeams>1</RequiresNoTeams>
+			<RequiresUniqueCivilizations>1</RequiresUniqueCivilizations>
+			<RequiresUniqueLeaders>1</RequiresUniqueLeaders>
+        </Row>
+    </RuleSets>
+    <Victories>
+        <Row Domain="MinesweeperVictories" VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Description="LOC_VICTORY_SWEPT_DESC" />
+    </Victories>
+    
+    <RulesetSupportedValues>
+        <Row Ruleset="RULESET_MINESWEEPER" Domain="StandardEras" Value="ERA_INDUSTRIAL"/>
+        <Row Ruleset="RULESET_MINESWEEPER" Domain="StandardGameSpeeds" Value="GAMESPEED_STANDARD"/>
+        <Row Ruleset="RULESET_MINESWEEPER" Domain="StandardTurnLimits" Value="TURNLIMIT_NONE"/>
+    </RulesetSupportedValues>
+    
+    <!--设置此情景模式的玩家、专用地图-->
+    <RulesetDomainOverrides>
+        <Row Ruleset="RULESET_MINESWEEPER" ParameterId="PlayerLeader" Domain="MineSweeper_Players"/>
+        <Row Ruleset="RULESET_MINESWEEPER" ParameterId="Map" Domain="MineSweeper_Maps"/>
+    </RulesetDomainOverrides>
+    
+    <MapDomainOverrides>
+        <Row Map="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map" ParameterId="MapSize" Domain="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map"/>
+    </MapDomainOverrides>
+    <MapSizes>
+        <Row Domain="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map" MapSizeType="MAPSIZE_DUEL" Name="LOC_MAPSIZE_DUEL_NAME" Description="LOC_MAPSIZE_DUEL_DESCRIPTION" MinPlayers="1" MaxPlayers="1" DefaultPlayers="1" MinCityStates="0" MaxCityStates="0" DefaultCityStates="0" SortIndex="10"/>
+    </MapSizes>
+    
+    <!--把一些选项隐藏起来-->
+    <ParameterDependencies>
+        <Row ParameterId="StartPosition" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER"/>
+        <Row ParameterId="CityStateCount" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER" />
+		<Row ParameterId="Temperature" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER" />
+		<Row ParameterId="Resources" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER" />
+    </ParameterDependencies>
+    <ConfigurationUpdates>
+		<Row SourceGroup="Game" SourceId="RULESET" SourceValue="RULESET_MINESWEEPER" 
+            TargetGroup="Game" TargetId="NO_DUPLICATE_LEADERS" TargetValue="0" Hash="0" />
+		<Row SourceGroup="Game" SourceId="RULESET" SourceValue="RULESET_MINESWEEPER" 
+            TargetGroup="Game" TargetId="NO_DUPLICATE_CIVILIZATIONS" TargetValue="0" Hash="0" />
+    </ConfigurationUpdates>
+    
+    <!--此种胜利方式要在扫雷模式下才会显示出来-->
+    <ParameterCriteria>
+        <Row ParameterId="VICTORY_SWEPT" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER"/>
+    </ParameterCriteria>
+    
+    
+    
+    <Players>
+		<Row Domain="MineSweeper_Players" CivilizationType="CIVILIZATION_CHINA" LeaderType="LEADER_QIN" CivilizationName="LOC_CIVILIZATION_CHINA_NAME" CivilizationIcon="ICON_CIVILIZATION_CHINA" LeaderName="LOC_LEADER_QIN_NAME" LeaderIcon="ICON_LEADER_QIN" CivilizationAbilityName="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_NAME" CivilizationAbilityDescription="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_DESCRIPTION" CivilizationAbilityIcon="ICON_CIVILIZATION_CHINA" LeaderAbilityName="LOC_TRAIT_LEADER_FIRST_EMPEROR_NAME" LeaderAbilityDescription="LOC_TRAIT_LEADER_FIRST_EMPEROR_DESCRIPTION" LeaderAbilityIcon="ICON_LEADER_QIN"/>
+    </Players>
+    
+    
+    <InputCategories>
+        <Row CategoryId="Cat_MineSweeper" Name="LOC_RULESET_MINE_SWEEPER_NAME" Visible="1" SortIndex="10"/>
+    </InputCategories>
+    <InputActions>
+        <Row ActionId="MarkPlot" Name="LOC_ACTION_MARK_PLOT_NAME" Description="LOC_ACTION_MARK_PLOT_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>
+        <Row ActionId="DigPlot" Name="LOC_ACTION_DIG_PLOT_NAME" Description="LOC_ACTION_DIG_PLOT_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>
+    </InputActions>
+</GameInfo>

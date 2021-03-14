@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameInfo>
+    <Types>
+		<Delete Type="CAPABILITY_CULTURE"/>
+        <Delete Type="CAPABILITY_CIVICS"/>
+		<Delete Type="CAPABILITY_CITY_STATES_VIEW"/>
+		<Delete Type="CAPABILITY_CIVICS_CHOOSER"/>
+		<Delete Type="CAPABILITY_CIVICS_TREE"/>
+		<Delete Type="CAPABILITY_CIVILOPEDIA"/>
+		<Delete Type="CAPABILITY_DIPLOMACY"/>
+		<Delete Type="CAPABILITY_DISPLAY_HUD_GOSSIP_LIST"/>
+		<Delete Type="CAPABILITY_TOP_PANEL_ENVOYS" />
+        <Delete Type="CAPABILITY_TRADE"/>
+		<Delete Type="CAPABILITY_TOURISM"/>
+        <Delete Type="CAPABILITY_FAITH"/>
+        <Delete Type="CAPABILITY_GOLD"/>
+        <Delete Type="CAPABILITY_SCIENCE"/>
+		<Delete Type="CAPABILITY_ERAS"/>
+        <Delete Type="CAPABILITY_GOVERNMENTS"/>
+		<Delete Type="CAPABILITY_GREAT_WORKS"/>
+		<Delete Type="CAPABILITY_GREAT_PEOPLE"/>
+		<Delete Type="CAPABILITY_LENS_TOGGLING_UI"/>
+		<Delete Type="CAPABILITY_LENS_APPEAL"/>
+		<Delete Type="CAPABILITY_LENS_CONTINENT"/>
+		<Delete Type="CAPABILITY_LENS_EMPIRE"/>
+		<Delete Type="CAPABILITY_LENS_GOVERNMENT"/>
+		<Delete Type="CAPABILITY_LENS_LOYALTY"/>
+		<Delete Type="CAPABILITY_LENS_RELIGION"/>
+		<Delete Type="CAPABILITY_LENS_SETTLER"/>
+		<Delete Type="CAPABILITY_LENS_TOURISM"/>
+		<Delete Type="CAPABILITY_SEARCH_GAME_MAP"/>
+		<Delete Type="CAPABILITY_ESPIONAGE"/>
+		<Delete Type="CAPABILITY_NEW_ESPIONAGE"/>
+		<Delete Type="CAPABILITY_ESPIONAGE_VIEW"/>
+		<Delete Type="CAPABILITY_RELIGION"/>
+		<Delete Type="CAPABILITY_REPORTS_LIST"/>
+		<Delete Type="CAPABILITY_WORLD_TRACKER"/>
+		<Delete Type="CAPABILITY_GOSSIP_REPORT"/>
+		<Delete Type="CAPABILITY_NOTIFY_UPGRADE_ROADS"/>
+		
+        <Row Type="VICTORY_SWEPT" Kind="KIND_VICTORY"/>
+        <Row Type="ABL_MOVE_FASTER" Kind="KIND_ABILITY"/>
+    </Types>
+    
+	<Notifications>
+		<Delete NotificationType="NOTIFICATION_CIVIC_BOOST"/>
+		<Delete NotificationType="NOTIFICATION_DECLARE_WAR"/>
+		<Delete NotificationType="NOTIFICATION_TECH_BOOST"/>
+		<Delete NotificationType="NOTIFICATION_TRADE_ROUTE_CAPACITY_INCREASED"/>	
+	</Notifications>
+	<MajorStartingUnits>
+        <Delete Era="ERA_INDUSTRIAL"/>
+        <Row Era="ERA_INDUSTRIAL" Unit="UNIT_BUILDER"/>
+	</MajorStartingUnits>
+    
+    <!--Victory-->
+    <Victories>
+        <Update>
+            <Set EnabledByDefault="0"/>
+        </Update>
+        <Row VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Blurb="LOC_VICTORY_SWEPT_BLURB" Description="LOC_VICTORY_SWEPT_DESCRIPTION" RequirementSetId="REQSET_VICTORY_SWEPT" CriticalPercentage="10" OneMoreTurn="1" Icon="ICON_VICTORY_SWEPT"/>
+    </Victories>
+
+
+    <Tags>
+        <Row Tag="CLASS_SAPPER" Vocabulary="ABILITY_CLASS"/>
+    </Tags>
+    <TypeTags>
+        <Row Type="ABL_MOVE_FASTER" Tag="CLASS_SAPPER"/>
+        <Row Type="UNIT_BUILDER" Tag="CLASS_SAPPER"/>
+    </TypeTags>
+	<UnitAbilities>
+		<Row UnitAbilityType="ABL_MOVE_FASTER" Name="快速移动" Description="减少移动力惩罚" Inactive="false" ShowFloatTextWhenEarned="false"/>
+	</UnitAbilities>
+	
+    <UnitAbilityModifiers>
+		<Row>
+			<UnitAbilityType>ABL_MOVE_FASTER</UnitAbilityType>
+			<ModifierId>RANGER_IGNORE_FOREST_MOVEMENT_PENALTY</ModifierId>
+		</Row>
+		<Row>
+			<UnitAbilityType>ABL_MOVE_FASTER</UnitAbilityType>
+			<ModifierId>ALPINE_IGNORE_HILLS_MOVEMENT_PENALTY</ModifierId>
+		</Row>
+    </UnitAbilityModifiers>
+</GameInfo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Mod id="a3738654-7f2d-11eb-a01b-408d5ca2b12e" version="1">
+	<Properties>
+		<Name>扫雷6</Name>
+		<Teaser>在文明6中玩扫雷</Teaser>
+		<Description>一个新的情景模式——扫雷6</Description>
+		<Authors>Hemmelfort</Authors>
+		<CompatibleVersions>2.0</CompatibleVersions>
+	</Properties>
+	<Settings>
+		<UpdateDatabase id="minesweeper_config">
+			<File>ms_config.xml</File>
+		</UpdateDatabase>
+		<AddMap id="ms_map">
+            <Properties>
+                <Group>MineSweeper_Maps</Group>
+                <Name>扫雷地图</Name>
+                <Description>此地图专门用来玩扫雷</Description>
+            </Properties>
+            <File>ms_map.Civ6Map</File>
+		</AddMap>
+	</Settings>
+	<Components>
+		<AddUserInterfaces id="minesweeper_ui">
+            <Properties>
+                <Context>InGame</Context>
+                <LoadOrder>200</LoadOrder>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
+            </Properties>
+			<File>ms_ui.xml</File>
+		</AddUserInterfaces>
+		<AddGameplayScripts id="ms_gamescript">
+            <Properties>
+                <LoadOrder>1000</LoadOrder>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
+            </Properties>
+            <File>ms_gamescript.lua</File>
+		</AddGameplayScripts>
+		<UpdateDatabase id="ms_gameplay">
+            <Properties>
+                <LoadOrder>1000</LoadOrder>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
+            </Properties>
+            <File>ms_gameplay.xml</File>
+		</UpdateDatabase>
+	</Components>
+	<Files>
+		<File>ms_config.xml</File>
+		<File>ms_gameplay.xml</File>
+		<File>ms_gamescript.lua</File>
+		<File>ms_ui.xml</File>
+		<File>ms_ui.lua</File>
+		<File>ms_map.Civ6Map</File>
+	</Files>
+</Mod>
