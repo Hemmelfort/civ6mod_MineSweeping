@@ -83,4 +83,11 @@
 			<ModifierId>ALPINE_IGNORE_HILLS_MOVEMENT_PENALTY</ModifierId>
 		</Row>
     </UnitAbilityModifiers>
+    
+    <Units>
+        <Update>
+            <Set WMDCapable="1"/>
+            <Where UnitType="UNIT_BUILDER"/>
+        </Update>
+    </Units>
 </GameInfo>
