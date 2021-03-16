@@ -1,7 +1,8 @@
 
 
-local m_iFeatureForest = GameInfo.Features['FEATURE_JUNGLE'].Index
+local m_iFeatureForest = GameInfo.Features['FEATURE_FOREST'].Index
 local m_iResourceMine = GameInfo.Resources['RESOURCE_URANIUM'].Index
+local m_iImprovementFlag = GameInfo.Improvements['IMPROVEMENT_FORT'].Index
 
 local m_AmountTable = {}
 local m_tNumberToResource = {
@@ -13,6 +14,8 @@ local m_tNumberToResource = {
     [6] = GameInfo.Resources['RESOURCE_COTTON'].Index,
 }
 
+local m_bFirstTry = true
+
 
 function GetResourceByNumber(num)
     local res = m_tNumberToResource[num]
@@ -22,6 +25,7 @@ function GetResourceByNumber(num)
         return GameInfo.Resources['RESOURCE_WINE'].Index
     end
 end
+
 
 
 function MSTest()
@@ -45,8 +49,18 @@ function MSTest()
 end
 
 
-function CheckPlotNearby(pPlot)
-    
+function RevealEmptyPlotsNearby(pPlot)
+    local tNeighborPlots = Map.GetAdjacentPlots(pPlot:GetX(), pPlot:GetY())
+    for _, plot in ipairs(tNeighborPlots) do
+        if (plot:GetFeatureType() == m_iFeatureForest) and (not plot:IsWater()) then
+            --local i = plot:GetIndex()
+            DigPlot(plot:GetX(), plot:GetY())
+--            if (m_AmountTable[i] == nil)then
+--                Game.AddWorldViewText(0, 'empty', plot:GetX(), plot:GetY())
+--            end
+        end
+        --if has been revealed: pass
+    end
 end
 
 
@@ -76,10 +90,12 @@ end
 
 function AddMine(pPlot)
     ResourceBuilder.SetResourceType(pPlot, m_iResourceMine, 1)
+    m_AmountTable[pPlot:GetIndex()] = nil
+    
     local tNeighborPlots = Map.GetAdjacentPlots(pPlot:GetX(), pPlot:GetY())
     for _, plot in ipairs(tNeighborPlots) do
         if (not plot:IsWater())
-        and (plot:GetResourceType() == -1)  --此处还需判断
+        and (plot:GetResourceType() == -1)
         then
             local i = plot:GetIndex()
             local v = m_AmountTable[i]
@@ -97,19 +113,28 @@ end
 function DigPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
     if (pPlot ~= nil) then
-        TerrainBuilder.SetFeatureType(pPlot, -1)
-        
         if (pPlot:GetResourceType() == m_iResourceMine) then
-            Detonate()
+            if m_bFirstTry then
+                m_bFirstTry = false
+                Game.AddWorldViewText(0, "don't dig here", iX, iY)
+            else
+                Detonate()
+            end
             return
         end
+        
+        TerrainBuilder.SetFeatureType(pPlot, -1)
         
         local num = m_AmountTable[pPlot:GetIndex()]
         if (num ~= nil) then
             local res = GetResourceByNumber(num)
             ResourceBuilder.SetResourceType(pPlot, res, 1)
         else
-            -- Check other 0s
+            RevealEmptyPlotsNearby(pPlot)
+        end
+        
+        if (pPlot:GetImprovementType() == m_iImprovementFlag) then
+            ImprovementBuilder.SetImprovementType(pPlot, -1, -1)
         end
     end
 end
@@ -117,7 +142,11 @@ end
 function MarkPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
     if (pPlot ~= nil) then
-        TerrainBuilder.SetFeatureType(pPlot, m_iFeatureForest)
+        if (pPlot:GetImprovementType() == m_iImprovementFlag) then
+            ImprovementBuilder.SetImprovementType(pPlot, -1, -1)
+        else
+            ImprovementBuilder.SetImprovementType(pPlot, m_iImprovementFlag, Game.GetLocalPlayer())
+        end
     end
 end
 
