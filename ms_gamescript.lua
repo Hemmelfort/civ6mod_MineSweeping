@@ -14,6 +14,9 @@ local m_tNumberToResource = {
     [6] = GameInfo.Resources['RESOURCE_COTTON'].Index,
 }
 
+local m_sUnitReferee = "UNIT_WARRIOR"
+local m_iLocalPlayer = Game.GetLocalPlayer()
+
 local m_AmountTable = {}
 local m_bFirstTry = true
 
@@ -31,7 +34,7 @@ end
 
 function MSTest()
     --Detonate()
-    Replay()
+    print('gameplay script just sent LuaEvents.MyCustomEvent.')
 end
 
 
@@ -88,6 +91,19 @@ function Replay()
             end
         end
     end
+    
+    -- 移除裁判
+    local pPlayer = Players[m_iLocalPlayer]
+    if (pPlayer ~= nil) then
+        for i, unit in pPlayer:GetUnits():Members() do
+            local unitInfo = GameInfo.Units[unit:GetType()];
+            if (unitInfo) then
+                if (unitInfo.UnitType == m_sUnitReferee) then
+                    UnitManager.Kill(unit)
+                end
+            end
+        end
+	end
     
 end
 
@@ -184,10 +200,32 @@ function Detonate()
 end
 
 
+function CheckVictory()
+    local tContinents = Map.GetContinentsInUse()
+    for i, eContinent in ipairs(tContinents) do
+        local tContinentPlots = Map.GetContinentPlots(eContinent)
 
+        for _, plot in ipairs(tContinentPlots) do
+            local pPlot = Map.GetPlotByIndex(plot)
+            if (pPlot:GetFeatureType() == m_iFeatureForest) 
+            and (pPlot:GetImprovementType() ~= m_iImprovementFlag) then
+                return
+            end
+        end
+    end
+
+    UnitManager.InitUnitValidAdjacentHex(m_iLocalPlayer, m_sUnitReferee, 0, 0, 1)
+end
+
+
+function RestoreMovement(iPlayerID, iUnitID)
+    local pUnit = UnitManager.GetUnit(iPlayerID, iUnitID);
+    UnitManager.RestoreMovement(pUnit)
+end
 
 
 LuaEvents.NewGameInitialized.Add(InitializeNewGame);
+
 
 if ExposedMembers.MineSweeper == nil then
     ExposedMembers.MineSweeper = {}
@@ -196,4 +234,7 @@ end
 ExposedMembers.MineSweeper.DigPlot = DigPlot
 ExposedMembers.MineSweeper.MarkPlot = MarkPlot
 ExposedMembers.MineSweeper.MSTest = MSTest
+ExposedMembers.MineSweeper.RestoreMovement = RestoreMovement
+ExposedMembers.MineSweeper.CheckVictory = CheckVictory
+ExposedMembers.MineSweeper.Replay = Replay
 

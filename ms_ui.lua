@@ -1,6 +1,8 @@
 
 print('Mine Sweeper UI is loading.')
 
+include("PopupDialog");
+
 local m_DigPlotAction = Input.GetActionId('DigPlot')
 local m_MarkPlotAction = Input.GetActionId('MarkPlot')
 local m_MSTestAction = Input.GetActionId('MSTest')
@@ -11,14 +13,27 @@ local pCurUnit
 
 
 function MSTest()
-    ExposedMembers.MineSweeper.MSTest()
+    print('--------mstest---------------->')
+    
+    local popup = PopupDialogInGame:new("UnitCaptured")
+    popup:AddTitle("title");
+    popup:AddText("text")
+    --popup:AddCheckBox(Locale.Lookup("LOC_REMEMBER_MY_CHOICE"), false, OnRememberChoice);
+    popup:AddCustomButton("new game", function()
+        ExposedMembers.MineSweeper.Replay()
+    end);
+    popup:AddCustomButton("test", function()
+        ExposedMembers.MineSweeper.MSTest()
+    end);
+    popup:Open();
 end
 
 
 function DigPlot()
-    --local pUnit = UI.GetHeadSelectedUnit()
     if pCurUnit ~= nil then
         ExposedMembers.MineSweeper.DigPlot(pCurUnit:GetX(), pCurUnit:GetY())
+        --ExposedMembers.MineSweeper.RestoreMovement(pCurPlayer:GetID(), pCurUnit:GetID())
+        ExposedMembers.MineSweeper.CheckVictory()
     end
 end
 
@@ -26,6 +41,8 @@ end
 function MarkPlot()
     if pCurUnit ~= nil then
         ExposedMembers.MineSweeper.MarkPlot(pCurUnit:GetX(), pCurUnit:GetY())
+        --ExposedMembers.MineSweeper.RestoreMovement(pCurPlayer:GetID(), pCurUnit:GetID())
+        ExposedMembers.MineSweeper.CheckVictory()
     end
 
 end
@@ -44,21 +61,17 @@ end
 
 function OnLoadGameViewStateDone()
     pCurPlayer = Players[Game.GetLocalPlayer()];
---    for i, unit in pCurPlayer:GetUnits():Members() do
---        if 
---    end
+    
+    local ctrl = ContextPtr:LookUpControl("/InGame/UnitPanel/StandardActionsStack")
+    Controls.MineSweeperActionButtons:ChangeParent(ctrl)
+    Controls.DigButton:RegisterCallback(Mouse.eLClick, DigPlot)
+    Controls.MarkButton:RegisterCallback(Mouse.eLClick, MarkPlot)
 end
 
 
 function OnUnitSelectionChanged(iPlayerID, iUnitID, iPlotX, iPlotY, iPlotZ, bSelected, bEditable)
     if bSelected then
         pCurUnit = UnitManager.GetUnit(iPlayerID, iUnitID)
-        
---        if pCurUnit:GetType() ~= m_SettlerIndex then
---            Controls.SettleButtonGrid:SetHide(true)
---            return
---        end
-        
     end
 end
 
@@ -66,4 +79,14 @@ end
 Events.InputActionTriggered.Add(OnInputActionTriggered)
 Events.LoadGameViewStateDone.Add(OnLoadGameViewStateDone)
 Events.UnitSelectionChanged.Add(OnUnitSelectionChanged)
+
+LuaEvents.EndGameMenu_Closed.Add(
+    function ()
+        ExposedMembers.MineSweeper.Replay()
+    end)
+
+
+
+
+
 

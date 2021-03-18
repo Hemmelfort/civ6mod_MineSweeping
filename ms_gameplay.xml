@@ -9,6 +9,7 @@
 		<Delete Type="CAPABILITY_CIVILOPEDIA"/>
 		<Delete Type="CAPABILITY_DIPLOMACY"/>
 		<Delete Type="CAPABILITY_DISPLAY_HUD_GOSSIP_LIST"/>
+		<Delete Type="CAPABILITY_DISPLAY_PLOT_YIELDS"/>
 		<Delete Type="CAPABILITY_TOP_PANEL_ENVOYS" />
         <Delete Type="CAPABILITY_TRADE"/>
 		<Delete Type="CAPABILITY_TOURISM"/>
@@ -82,13 +83,81 @@
 			<UnitAbilityType>ABL_MOVE_FASTER</UnitAbilityType>
 			<ModifierId>ALPINE_IGNORE_HILLS_MOVEMENT_PENALTY</ModifierId>
 		</Row>
+        <Row>
+            <UnitAbilityType>ABL_MOVE_FASTER</UnitAbilityType>
+            <ModifierId>SAPPER_MOVEMENT_BONUS</ModifierId>
+        </Row>
     </UnitAbilityModifiers>
+    <Modifiers>
+        <Row>
+            <ModifierId>SAPPER_MOVEMENT_BONUS</ModifierId>
+            <ModifierType>MODIFIER_PLAYER_UNIT_ADJUST_MOVEMENT</ModifierType>
+        </Row>
+    </Modifiers>
+    <ModifierArguments>
+        <Row>
+            <ModifierId>SAPPER_MOVEMENT_BONUS</ModifierId>
+            <Name>Amount</Name>
+            <Value>6</Value>
+        </Row>
+    </ModifierArguments>
     
-    <Units>
-        <Update>
-            <Set WMDCapable="1"/>
-            <Where UnitType="UNIT_BUILDER"/>
-        </Update>
-    </Units>
+
+    <!-- RequirementSets -->
+    <RequirementSets>
+        <Row>
+            <RequirementSetId>REQSET_VICTORY_SWEPT</RequirementSetId>
+            <RequirementSetType>REQUIREMENTSET_TEST_ALL</RequirementSetType>
+        </Row>
+        <Row>
+            <RequirementSetId>REQSET_YOUNEIGUI</RequirementSetId>
+            <RequirementSetType>REQUIREMENTSET_TEST_ALL</RequirementSetType>
+        </Row>
+    </RequirementSets>
+    <RequirementSetRequirements>
+        <Row>
+            <RequirementSetId>REQSET_VICTORY_SWEPT</RequirementSetId>
+            <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
+        </Row>
+        <Row>
+            <RequirementSetId>REQSET_YOUNEIGUI</RequirementSetId>
+            <RequirementId>REQ_YOUNEIGUI</RequirementId>
+        </Row>
+    </RequirementSetRequirements>
+    <!-- Requirements -->
+    <Requirements>
+        <Row>
+            <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
+            <RequirementType>REQUIREMENT_COLLECTION_ANY_MET</RequirementType>
+        </Row>
+        <Row>
+            <RequirementId>REQ_YOUNEIGUI</RequirementId>
+            <RequirementType>REQUIREMENT_UNIT_TYPE_MATCHES</RequirementType>
+        </Row>
+    </Requirements>
+    <RequirementArguments>
+        <Row>
+            <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
+            <Name>CollectionType</Name>
+            <Value>COLLECTION_PLAYER_UNITS</Value>
+        </Row>
+        <Row>
+            <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
+            <Name>RequirementSetId</Name>
+            <Value>REQSET_YOUNEIGUI</Value>
+        </Row>
+        <Row>
+            <RequirementId>REQ_YOUNEIGUI</RequirementId>
+            <Name>UnitType</Name>
+            <Value>UNIT_WARRIOR</Value>
+        </Row>
+    </RequirementArguments>
+    <RequirementStrings>
+        <Row>
+            <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
+            <Context>VictoryProgress</Context>
+            <Text>LOC_VICTORY_SUPPRESS_REQUIREMENT</Text>
+        </Row>
+    </RequirementStrings>
 
 </GameInfo>
