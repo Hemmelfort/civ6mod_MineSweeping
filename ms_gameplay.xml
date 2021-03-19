@@ -156,7 +156,7 @@
         <Row>
             <RequirementId>REQ_01_VICTORY_SUPPRESS</RequirementId>
             <Context>VictoryProgress</Context>
-            <Text>LOC_VICTORY_SUPPRESS_REQUIREMENT</Text>
+            <Text>LOC_VICTORY_SWEPT_REQUIREMENT</Text>
         </Row>
     </RequirementStrings>
 

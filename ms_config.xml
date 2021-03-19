@@ -17,7 +17,7 @@
         </Row>
     </RuleSets>
     <Victories>
-        <Row Domain="MinesweeperVictories" VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Description="LOC_VICTORY_SWEPT_DESC" />
+        <Row Domain="MinesweeperVictories" VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Description="LOC_VICTORY_SWEPT_DESCRIPTION" />
     </Victories>
     
     <RulesetSupportedValues>
@@ -66,7 +66,7 @@
     
     
     <InputCategories>
-        <Row CategoryId="Cat_MineSweeper" Name="LOC_RULESET_MINE_SWEEPER_NAME" Visible="1" SortIndex="10"/>
+        <Row CategoryId="Cat_MineSweeper" Name="LOC_SCENARIO_MINESWEEPER_NAME" Visible="1" SortIndex="10"/>
     </InputCategories>
     <InputActions>
         <Row ActionId="MarkPlot" Name="LOC_ACTION_MARK_PLOT_NAME" Description="LOC_ACTION_MARK_PLOT_DESC" CategoryId="Cat_MineSweeper" ContextId="World"/>

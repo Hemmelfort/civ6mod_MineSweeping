@@ -1,5 +1,6 @@
 
 
+
 local m_iFeatureForest = GameInfo.Features['FEATURE_FOREST'].Index
 local m_iResourceMine = GameInfo.Resources['RESOURCE_URANIUM'].Index
 local m_iImprovementFlag = GameInfo.Improvements['IMPROVEMENT_FORT'].Index
@@ -34,7 +35,7 @@ end
 
 function MSTest()
     --Detonate()
-    print('gameplay script just sent LuaEvents.MyCustomEvent.')
+    print('ms test in gameplay script.')
 end
 
 
@@ -176,7 +177,9 @@ function MarkPlot(iX, iY)
     if (pPlot ~= nil) and (pPlot:GetFeatureType() == m_iFeatureForest) then
         if (pPlot:GetImprovementType() == m_iImprovementFlag) then
             ImprovementBuilder.SetImprovementType(pPlot, -1, -1)
+            TerrainBuilder.SetFeatureType(pPlot, m_iFeatureForest)
         else
+            TerrainBuilder.SetFeatureType(pPlot, -1)
             ImprovementBuilder.SetImprovementType(pPlot, m_iImprovementFlag, Game.GetLocalPlayer())
         end
     end
@@ -197,24 +200,43 @@ function Detonate()
             end
         end
     end
+    ExposedMembers.MineSweeper.GameOver()
 end
 
 
 function CheckVictory()
+    -- 先确定所有格位均开发完毕
     local tContinents = Map.GetContinentsInUse()
     for i, eContinent in ipairs(tContinents) do
         local tContinentPlots = Map.GetContinentPlots(eContinent)
 
         for _, plot in ipairs(tContinentPlots) do
             local pPlot = Map.GetPlotByIndex(plot)
-            if (pPlot:GetFeatureType() == m_iFeatureForest) 
-            and (pPlot:GetImprovementType() ~= m_iImprovementFlag) then
+            if (pPlot:GetFeatureType() == m_iFeatureForest) then
                 return
             end
         end
     end
+    
+    -- 如果已经标记完所有的格位，再判断标记对不对
+    for i, eContinent in ipairs(tContinents) do
+        local tContinentPlots = Map.GetContinentPlots(eContinent)
 
-    UnitManager.InitUnitValidAdjacentHex(m_iLocalPlayer, m_sUnitReferee, 0, 0, 1)
+        for _, plot in ipairs(tContinentPlots) do
+            local pPlot = Map.GetPlotByIndex(plot)
+            if (pPlot:GetImprovementType() == m_iImprovementFlag)
+            and (pPlot:GetResourceType() ~= m_iResourceMine) then
+                Detonate()
+            end
+        end
+    end
+
+    local requirementSetID = Game.GetVictoryRequirements(Players[m_iLocalPlayer]:GetTeam(), 'VICTORY_SWEPT');
+    if (requirementSetID ~= nil) and (requirementSetID ~= -1) then
+        UnitManager.InitUnitValidAdjacentHex(m_iLocalPlayer, m_sUnitReferee, 0, 0, 1)
+    else
+        ExposedMembers.MineSweeper.GameWon()
+    end
 end
 
 
@@ -237,4 +259,6 @@ ExposedMembers.MineSweeper.MSTest = MSTest
 ExposedMembers.MineSweeper.RestoreMovement = RestoreMovement
 ExposedMembers.MineSweeper.CheckVictory = CheckVictory
 ExposedMembers.MineSweeper.Replay = Replay
+
+
 
