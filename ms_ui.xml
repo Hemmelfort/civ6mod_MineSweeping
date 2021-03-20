@@ -5,12 +5,15 @@
     
     <Stack ID="MineSweeperActionButtons" Anchor="R,B" Size="auto,41" AutoSizePadding="6,0" Texture="SelectionPanel_ActionGroupSlot" SliceCorner="5,19" SliceSize="1,1" SliceTextureSize="12,41" ConsumeMouse="1" Alpha="0.75" StackGrowth="Right">
 		<Button ID="DigButton" Anchor="C,B" Size="44,53" Texture="UnitPanel_ActionButton" ToolTip="LOC_DIG_BUTTON_TOOLTIP">
-			<Image ID="DigButtonIcon" Anchor="C,C" Offset="0,-2" Size="38,38"  Icon="ICON_UNITOPERATION_EXCAVATE"/>
+			<Image ID="DigButtonIcon" Anchor="C,C" Offset="0,-2" Size="38,38" Icon="ICON_UNITOPERATION_EXCAVATE"/>
 		</Button>
 		<Button ID="MarkButton" Anchor="C,B" Size="44,53" Texture="UnitPanel_ActionButton" ToolTip="LOC_MARK_BUTTON_TOOLTIP">
-			<Image ID="MarkButtonIcon" Anchor="C,C" Offset="0,-2" Size="38,38"  Icon="ICON_UNITCOMMAND_NAME_UNIT"/>
+			<Image ID="MarkButtonIcon" Anchor="C,C" Offset="0,-2" Size="38,38" Icon="ICON_UNITCOMMAND_NAME_UNIT"/>
 		</Button>
     </Stack>
 
-
+    <Stack	ID="TopBar" Anchor="L,T" Offset="0,2" Size="auto,auto" StackGrowth="Right">
+      <Image ID="MineIcon" Anchor="L,C" Offset="10,-1" Size="24,24" Icon="ICON_RESOURCE_OIL"/>
+      <Label ID="MineRemain" Anchor="L,C" Style="FontNormal14" ColorSet="TopBarValueCS"/>
+    </Stack>
 </Context>

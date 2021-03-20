@@ -20,6 +20,19 @@ local m_iLocalPlayer = Game.GetLocalPlayer()
 
 local m_AmountTable = {}
 local m_bFirstTry = true
+local m_iMinesRemain = 0
+
+
+
+function IsIncluded(tab, value)
+    for _, v in ipairs(tab) do
+        if value == v then
+            return true
+        end
+    end
+    
+    return false
+end
 
 
 function GetResourceByNumber(num)
@@ -70,6 +83,7 @@ end
 function Replay()
     m_bFirstTry = true
     m_AmountTable = {}
+    m_iMinesRemain = 0
     
     -- 清除改良设施、资源，然后种树
     local tContinents = Map.GetContinentsInUse()
@@ -82,13 +96,6 @@ function Replay()
                 ImprovementBuilder.SetImprovementType(pPlot, -1, -1)
                 ResourceBuilder.SetResourceType(pPlot, -1)
                 TerrainBuilder.SetFeatureType(pPlot, m_iFeatureForest)
-            end
-        end
-        
-        for _, plot in ipairs(tContinentPlots) do
-            if (math.random() < 0.1) then
-                local pPlot = Map.GetPlotByIndex(plot)
-                AddMine(pPlot)
             end
         end
     end
@@ -117,6 +124,7 @@ function AddMine(pPlot)
     
     ResourceBuilder.SetResourceType(pPlot, m_iResourceMine, 1)
     m_AmountTable[pPlot:GetIndex()] = nil   --有雷的格位不能有数字
+    m_iMinesRemain = m_iMinesRemain + 1
     
     -- 在地雷周围记录数字
     local tNeighborPlots = Map.GetAdjacentPlots(pPlot:GetX(), pPlot:GetY())
@@ -136,6 +144,20 @@ function AddMine(pPlot)
 end
 
 
+function AddMines(tInvalidPlots : table)
+    local tContinents = Map.GetContinentsInUse()
+    for i, eContinent in ipairs(tContinents) do
+        local tContinentPlots = Map.GetContinentPlots(eContinent)
+        
+        for _, plot in ipairs(tContinentPlots) do
+            if (not IsIncluded(tInvalidPlots, plot)) and (math.random() < 0.15) then
+                local pPlot = Map.GetPlotByIndex(plot)
+                AddMine(pPlot)
+            end
+        end
+    end
+end
+
 
 function DigPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
@@ -144,14 +166,23 @@ function DigPlot(iX, iY)
         return
     end
 
+    -- 保证第一次挖到的是空地，所以要等玩家开挖后再布雷
+    if m_bFirstTry then
+        -- 当前格位及其周围格位不能有雷，才能保证当前格位必定是空地
+        local tInvalidPlots = {}
+        local tNeighborPlots = Map.GetAdjacentPlots(pPlot:GetX(), pPlot:GetY())
+        for _, plot in ipairs(tNeighborPlots) do
+            table.insert(tInvalidPlots, plot:GetIndex())
+        end
+        table.insert(tInvalidPlots, pPlot:GetIndex())
+        
+        AddMines(tInvalidPlots)
+        m_bFirstTry = false
+    end
+    
     -- 挖到雷了
     if (pPlot:GetResourceType() == m_iResourceMine) then
-        if m_bFirstTry then
-            m_bFirstTry = false
-            Game.AddWorldViewText(0, "don't dig here", iX, iY)
-        else
-            Detonate()
-        end
+        Detonate()
         return
     end
     
@@ -172,15 +203,18 @@ function DigPlot(iX, iY)
     end
 end
 
+
 function MarkPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
-    if (pPlot ~= nil) and (pPlot:GetFeatureType() == m_iFeatureForest) then
+    if (pPlot ~= nil) then
         if (pPlot:GetImprovementType() == m_iImprovementFlag) then
             ImprovementBuilder.SetImprovementType(pPlot, -1, -1)
             TerrainBuilder.SetFeatureType(pPlot, m_iFeatureForest)
+            m_iMinesRemain = m_iMinesRemain + 1
         else
             TerrainBuilder.SetFeatureType(pPlot, -1)
             ImprovementBuilder.SetImprovementType(pPlot, m_iImprovementFlag, Game.GetLocalPlayer())
+            m_iMinesRemain = m_iMinesRemain - 1
         end
     end
 end
@@ -240,6 +274,11 @@ function CheckVictory()
 end
 
 
+function GetMinesRemain()
+    return m_iMinesRemain
+end
+
+
 function RestoreMovement(iPlayerID, iUnitID)
     local pUnit = UnitManager.GetUnit(iPlayerID, iUnitID);
     UnitManager.RestoreMovement(pUnit)
@@ -259,6 +298,7 @@ ExposedMembers.MineSweeper.MSTest = MSTest
 ExposedMembers.MineSweeper.RestoreMovement = RestoreMovement
 ExposedMembers.MineSweeper.CheckVictory = CheckVictory
 ExposedMembers.MineSweeper.Replay = Replay
+ExposedMembers.MineSweeper.GetMinesRemain = GetMinesRemain
 
 
 

@@ -5,37 +5,6 @@ include("PopupDialog");
 
 
 
---todo:工人不能铲掉改良
---在已标记的格位上，任一按钮都应可以删掉标记
-function WriteDisabledUnitAction( actionName:string, optionalUnitType:string)
-	local unitTypeName:string = optionalUnitType ~= nil and optionalUnitType or "_ALL";
-	
-	local pParameters :table = UI.GetGameParameters():Get("UnitActionRestrictions");
-	if pParameters == nil then 
-		pParameters = UI.GetGameParameters():Add("UnitActionRestrictions");
-	end
-	
-	if pParameters ~= nil then
-
-		local pData:table = pParameters:Get( unitTypeName );
-		if pData == nil then
-			pData = pParameters:Add( unitTypeName );
-		end
-		for i,v in ipairs(pData) do
-			if v == actionName then
-				UI.DataError("Could not WriteDisabledUnitAction 'UnitActionRestrictions' since it is already set!: "..actionName.." for "..unitTypeName);
-				return;
-			end
-		end		
-		if isDebugVerbose then print("TUTSERIALIZE Write: [UnitActionRestrictions]> ["..unitTypeName.."]= "..actionName); end
-		pData:AppendValue( actionName );
-	else		
-		UI.DataError("Could not WriteDisabledUnitAction 'UnitActionRestrictions': "..actionName.." for "..unitTypeName);
-	end
-end
-WriteDisabledUnitAction("UNITOPERATION_REMOVE_IMPROVEMENT", "UNIT_BUILDER")
-
-
 local m_DigPlotAction = Input.GetActionId('DigPlot')
 local m_MarkPlotAction = Input.GetActionId('MarkPlot')
 local m_MSTestAction = Input.GetActionId('MSTest')
@@ -71,6 +40,8 @@ function DigPlot()
         ExposedMembers.MineSweeper.DigPlot(pCurUnit:GetX(), pCurUnit:GetY())
         --ExposedMembers.MineSweeper.RestoreMovement(pCurPlayer:GetID(), pCurUnit:GetID())
         ExposedMembers.MineSweeper.CheckVictory()
+        local i = ExposedMembers.MineSweeper.GetMinesRemain()
+        Controls.MineRemain:SetText(tostring(i))
     end
 end
 
@@ -80,6 +51,8 @@ function MarkPlot()
         ExposedMembers.MineSweeper.MarkPlot(pCurUnit:GetX(), pCurUnit:GetY())
         --ExposedMembers.MineSweeper.RestoreMovement(pCurPlayer:GetID(), pCurUnit:GetID())
         ExposedMembers.MineSweeper.CheckVictory()
+        local i = ExposedMembers.MineSweeper.GetMinesRemain()
+        Controls.MineRemain:SetText(tostring(i))
     end
 
 end
@@ -142,6 +115,10 @@ function OnLoadGameViewStateDone()
     Controls.MineSweeperActionButtons:ChangeParent(ctrl)
     Controls.DigButton:RegisterCallback(Mouse.eLClick, DigPlot)
     Controls.MarkButton:RegisterCallback(Mouse.eLClick, MarkPlot)
+    
+    ctrl = ContextPtr:LookUpControl("/InGame/TopPanel")
+    Controls.TopBar:ChangeParent(ctrl)
+
 end
 
 

@@ -73,6 +73,15 @@
 	<UnitAbilities>
 		<Row UnitAbilityType="ABL_MOVE_FASTER" Name="快速移动" Description="减少移动力惩罚" Inactive="false" ShowFloatTextWhenEarned="false"/>
 	</UnitAbilities>
+	<Improvement_ValidBuildUnits>
+        <Delete UnitType="UNIT_BUILDER"/>
+	</Improvement_ValidBuildUnits>
+	<UnitOperations>
+        <Update>
+            <Set VisibleInUI="0"/>
+            <Where OperationType="UNITOPERATION_REMOVE_IMPROVEMENT"/>
+        </Update>
+	</UnitOperations>
 	
     <UnitAbilityModifiers>
 		<Row>
@@ -160,4 +169,19 @@
         </Row>
     </RequirementStrings>
 
+
+
+    <HistoricRankings>
+        <Delete/>
+        <Row>
+            <HistoricLeader>LOC_HISTORIC_LEADER_1</HistoricLeader>
+            <Quote>LOC_HISTORIC_QUOTE_1</Quote>
+            <Score>1000</Score>
+        </Row>
+        <Row>
+            <HistoricLeader>LOC_HISTORIC_LEADER_2</HistoricLeader>
+            <Quote>LOC_HISTORIC_QUOTE_2</Quote>
+            <Score>200</Score>
+        </Row>
+    </HistoricRankings>
 </GameInfo>

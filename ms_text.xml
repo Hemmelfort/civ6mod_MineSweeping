@@ -25,6 +25,30 @@
 		<Row Tag="LOC_MINESWEEPER_WON_TEXT" Language="en_US">
 			<Text>Congratulations!</Text>
 		</Row>
+        <Replace Tag="LOC_HISTORIC_LEADER_1" Language="en_US">
+            <Text>Others</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_LEADER_2" Language="en_US">
+            <Text>You</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_QUOTE_1" Language="en_US">
+            <Text>Highest</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_QUOTE_2" Language="en_US">
+            <Text>Lowest</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_LEADER_1" Language="zh_Hans_CN">
+            <Text>别人</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_LEADER_2" Language="zh_Hans_CN">
+            <Text>你</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_QUOTE_1" Language="zh_Hans_CN">
+            <Text>分数最高</Text>
+        </Replace>
+        <Replace Tag="LOC_HISTORIC_QUOTE_2" Language="zh_Hans_CN">
+            <Text>分数最低</Text>
+        </Replace>
 		<Row Tag="LOC_MINESWEEPER_WON_TITLE" Language="zh_Hans_CN">
 			<Text>成功</Text>
 		</Row>
