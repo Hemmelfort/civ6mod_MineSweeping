@@ -10,6 +10,7 @@ local m_MarkPlotAction = Input.GetActionId('MarkPlot')
 local m_MSTestAction = Input.GetActionId('MSTest')
 
 local m_bGameOver = false
+local m_bTipShown = false
 
 local pCurPlayer
 local pCurUnit
@@ -118,6 +119,21 @@ function OnLoadGameViewStateDone()
     
     ctrl = ContextPtr:LookUpControl("/InGame/TopPanel")
     Controls.TopBar:ChangeParent(ctrl)
+    
+    ctrl = ContextPtr:LookUpControl("/InGame/TopPanel")
+    Controls.MS_TipsStack:ChangeParent(ctrl)
+    Controls.MS_TipsAnimation:ChangeParent(ctrl)
+    Controls.MS_TipsAnimation:SetToBeginning()
+    Controls.ToggleTipsButton:RegisterCallback(Mouse.eLClick, function()
+        if m_bTipShown then
+            m_bTipShown = false
+            Controls.MS_TipsAnimation:Reverse()
+        else
+            m_bTipShown = true
+            Controls.MS_TipsAnimation:SetToBeginning()
+            Controls.MS_TipsAnimation:Play()
+        end
+    end)
 
 end
 

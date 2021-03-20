@@ -14,6 +14,22 @@
 
     <Stack	ID="TopBar" Anchor="L,T" Offset="0,2" Size="auto,auto" StackGrowth="Right">
       <Image ID="MineIcon" Anchor="L,C" Offset="10,-1" Size="24,24" Icon="ICON_RESOURCE_OIL"/>
-      <Label ID="MineRemain" Anchor="L,C" Style="FontNormal14" ColorSet="TopBarValueCS"/>
+      <Label ID="MineRemain" Anchor="L,C" Style="FontNormal14" ColorSet="TopBarValueCS" String="??"/>
     </Stack>
+    
+    <Stack ID="MS_TipsStack" Anchor="L,T" Offset="25,50">
+		<Button ID="ToggleTipsButton" Anchor="C,C" Size="29,29" Texture="TopBar_CivilopediaButton" ToolTip="LOC_TIPS_BUTTON_TOOLTIP"/>
+    </Stack>
+    
+    <AlphaAnim ID="MS_TipsAnimation" AlphaBegin="0" AlphaEnd="1" Speed="5" Cycle="Once">
+        <Grid ID="MS_TipsPanel" Offset="18,80"  Anchor="L,T" Size="220,119" MinSize="121,119" Texture="Tracker_OptionsBacking.dds" SliceCorner="55,61" SliceSize="1,1" SliceTextureSize="121,119" ConsumeAllMouse="1" >
+            <Label ID="MS_TipsTitle" Anchor="C,T" String="LOC_TIPS_BUTTON_TOOLTIP" Offset="-6,10" Style="FontFlair16" Color0="106,93,69,255" Color1="0,0,0,150" Color2="146,133,109,255" FontStyle="Glow" SmallCaps="20" SmallCapsLeading="0" SmallCapsType="EveryWord" KerningAdjustment="0"/>
+            <Stack ID="MS_TipsContentStack"	Anchor="L,T" StackGrowth="Bottom" Offset="25,0" StackPadding="1" >
+                <Label ID="ToggleGridButton" Offset="10,20" String="[ICON_RESOURCE_HORSES]: 2" Style="WhiteSemiBold14" Anchor="L,C"/>
+                <Label ID="ToggleGridButton" Offset="10,50" String="[ICON_RESOURCE_HORSES]: 3" Style="WhiteSemiBold14" Anchor="L,C"/>
+                <CheckBox ID="ToggleResourcesButton" IsChecked="1" 	Offset="10,4"	TextOffset="-5,0" String="LOC_HUD_MAP_SHOW_RESOURCES" ToolTip="LOC_HUD_TOGGLE_RESOURCE_ICONS" Style="WhiteSemiBold14" ButtonTexture="Controls_Checkbox.dds"	ButtonSize="17,17" CheckTexture="Controls_Checkbox.dds"	CheckSize="17,17" CheckTextureOffset="0,17"  Anchor="R,T"/>
+                <CheckBox ID="ToggleYieldsButton" IsChecked="0" 	Offset="10,4"	TextOffset="-5,0" String="LOC_HUD_MAP_SHOW_YIELDS" ToolTip="LOC_HUD_TOGGLE_YIELD_ICONS" Style="WhiteSemiBold14" ButtonTexture="Controls_Checkbox.dds"	ButtonSize="17,17" CheckTexture="Controls_Checkbox.dds"	CheckSize="17,17" CheckTextureOffset="0,17"  Anchor="R,T"/>
+            </Stack>
+        </Grid>
+    </AlphaAnim>
 </Context>

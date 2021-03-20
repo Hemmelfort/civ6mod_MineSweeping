@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Mod id="a3738654-7f2d-11eb-a01b-408d5ca2b12e" version="1">
 	<Properties>
-		<Name>扫雷6</Name>
-		<Teaser>在文明6中玩扫雷</Teaser>
-		<Description>一个新的情景模式——扫雷6</Description>
+		<Name>LOC_MOD_MINESWEEPER_NAME</Name>
+		<Teaser>LOC_MOD_MINESWEEPER_TEASER</Teaser>
+		<Description>LOC_MOD_MINESWEEPER_DESCRIPTION</Description>
 		<Authors>Hemmelfort</Authors>
 		<CompatibleVersions>2.0</CompatibleVersions>
 	</Properties>
@@ -77,4 +77,19 @@
 		<File>UI/UnitFlagManager.xml</File>
 		<File>UI/UnitFlagManager.lua</File>
 	</Files>
+	
+	<LocalizedText>
+		<Text id="LOC_MOD_MINESWEEPER_NAME">
+			<zh_Hans_CN>情景：扫雷6</zh_Hans_CN>
+			<en_US>Scenario: Mine Sweeper VI</en_US>
+		</Text>
+		<Text id="LOC_MOD_MINESWEEPER_TEASER">
+			<zh_Hans_CN>在文明6中玩扫雷</zh_Hans_CN>
+			<en_US>Play Mine Sweeper in Civilization VI</en_US>
+		</Text>
+		<Text id="LOC_MOD_MINESWEEPER_DESCRIPTION">
+			<zh_Hans_CN>一个新的情景模式：扫雷6。[NEWLINE][NEWLINE]玩法跟经典的扫雷游戏一样，把地图上所有的地雷标记出来就能获得胜利。</zh_Hans_CN>
+			<en_US>This is a new scenario: Mine Sweeper 6. [NEWLINE][NEWLINE]Playing with the classic mine sweeper game, marking all the mines on the map to win.</en_US>
+		</Text>
+	</LocalizedText>
 </Mod>

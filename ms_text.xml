@@ -16,6 +16,9 @@
 		<Row Tag="LOC_MARK_BUTTON_TOOLTIP" Language="en_US">
 			<Text>Mark Here</Text>
 		</Row>
+		<Row Tag="LOC_TIPS_BUTTON_TOOLTIP" Language="en_US">
+			<Text>Tips</Text>
+		</Row>
 		<Row Tag="LOC_MINESWEEPER_EXIT_TO_MAIN" Language="en_US">
 			<Text>Main Menu</Text>
 		</Row>
@@ -69,6 +72,9 @@
 		</Row>
 		<Row Tag="LOC_MARK_BUTTON_TOOLTIP" Language="zh_Hans_CN">
 			<Text>标记</Text>
+		</Row>
+		<Row Tag="LOC_TIPS_BUTTON_TOOLTIP" Language="zh_Hans_CN">
+			<Text>说明</Text>
 		</Row>
 		<Row Tag="LOC_MINESWEEPER_EXIT_TO_MAIN" Language="zh_Hans_CN">
 			<Text>返回主菜单</Text>
