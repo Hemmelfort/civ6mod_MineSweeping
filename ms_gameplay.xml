@@ -73,6 +73,7 @@
 	<UnitAbilities>
 		<Row UnitAbilityType="ABL_MOVE_FASTER" Name="快速移动" Description="减少移动力惩罚" Inactive="false" ShowFloatTextWhenEarned="false"/>
 	</UnitAbilities>
+	
 	<Improvement_ValidBuildUnits>
         <Delete UnitType="UNIT_BUILDER"/>
 	</Improvement_ValidBuildUnits>
@@ -169,6 +170,23 @@
         </Row>
     </RequirementStrings>
 
+
+	<Types>
+		<Row Type="LEADER_MINESWEEPER" Kind="KIND_LEADER"/>
+		<Row Type="CIVILIZATION_MINESWEEPER" Kind="KIND_CIVILIZATION"/>
+	</Types>
+	<Leaders>
+		<Row LeaderType="LEADER_MINESWEEPER" Name="LOC_LEADER_MINESWEEPER_NAME" InheritFrom="LEADER_DEFAULT"/>
+	</Leaders>
+	<Civilizations>
+		<Row CivilizationType="CIVILIZATION_MINESWEEPER" Name="LOC_CIVILIZATION_MINESWEEPER_NAME" Description="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Adjective="LOC_CIVILIZATION_MINESWEEPER_NAME" RandomCityNameDepth="1" StartingCivilizationLevelType="CIVILIZATION_LEVEL_FULL_CIV" Ethnicity="ETHNICITY_ASIAN"/>
+	</Civilizations>
+	<CivilizationLeaders>
+		<Row CivilizationType="CIVILIZATION_MINESWEEPER" LeaderType="LEADER_MINESWEEPER" CapitalName="LOC_CITY_NAME_NOCITY"/>
+	</CivilizationLeaders>
+	<LoadingInfo>
+		<Row LeaderType="LEADER_MINESWEEPER" ForegroundImage="TESTIMG.dds" BackgroundImage="LEADER_DEFAULT_BACKGROUND.dds" PlayDawnOfManAudio="0" EraText=" " LeaderText="LOC_LOADING_INFO_LEADER_MINESWEEPER"/>
+	</LoadingInfo>
 
 
     <HistoricRankings>

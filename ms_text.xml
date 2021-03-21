@@ -28,6 +28,42 @@
 		<Row Tag="LOC_MINESWEEPER_WON_TEXT" Language="en_US">
 			<Text>Congratulations!</Text>
 		</Row>
+		<Row Tag="LOC_MINE_ICON_REPRESENTS" Language="en_US">
+            <Text>[ICON_RESOURCE_OIL] represents mine.</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_MINESWEEPER_NAME" Language="en_US">
+            <Text>MS Player</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_NAME" Language="en_US">
+            <Text>MS</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Language="en_US">
+            <Text>Civ for MineSweeper</Text>
+		</Row>
+		<Row Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER" Language="en_US">
+            <Text>The big question mark below is only temporary.</Text>
+		</Row>
+        <Replace Tag="LOC_IMPROVEMENT_FORT_NAME" Language="en_US">
+            <Text>Mark Mine</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_RICE_NAME" Language="en_US">
+            <Text>Mines nearby：1</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_WHEAT_NAME" Language="en_US">
+            <Text>Mines nearby：2</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SUGAR_NAME" Language="en_US">
+            <Text>Mines nearby：3</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SALT_NAME" Language="en_US">
+            <Text>Mines nearby：4</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SILVER_NAME" Language="en_US">
+            <Text>Mines nearby：5</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_COTTON_NAME" Language="en_US">
+            <Text>Mines nearby：6</Text>
+        </Replace>
         <Replace Tag="LOC_HISTORIC_LEADER_1" Language="en_US">
             <Text>Others</Text>
         </Replace>
@@ -118,5 +154,43 @@
 		<Row Tag="LOC_SCENARIO_MINESWEEPER_DESCRIPTIOIN" Language="zh_Hans_CN">
 			<Text>在一片大陆上有许多格子，有的下面埋有地雷，有的没有。与地雷相邻的格子会标有数字，数字意味着它周围一共有多少颗地雷。根据这个规则，你可以把所有的雷都标记出来，从而完成挑战。</Text>
 		</Row>
+		<Row Tag="LOC_MINE_ICON_REPRESENTS" Language="zh_Hans_CN">
+            <Text>[ICON_RESOURCE_OIL] 表示地雷</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_MINESWEEPER_NAME" Language="zh_Hans_CN">
+            <Text>扫雷玩家</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_NAME" Language="zh_Hans_CN">
+            <Text>扫雷文明</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Language="zh_Hans_CN">
+            <Text>专门用来扫雷的文明</Text>
+		</Row>
+		<Row Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER" Language="zh_Hans_CN">
+            <Text>下面这个大问号只是暂时的。</Text>
+		</Row>
+		
+        <Replace Tag="LOC_IMPROVEMENT_FORT_NAME" Language="zh_Hans_CN">
+            <Text>标记地雷</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_RICE_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：1</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_WHEAT_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：2</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SUGAR_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：3</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SALT_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：4</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_SILVER_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：5</Text>
+        </Replace>
+        <Replace Tag="LOC_RESOURCE_COTTON_NAME" Language="zh_Hans_CN">
+            <Text>周围地雷数：6</Text>
+        </Replace>
+
 	</LocalizedText>
 </GameData>

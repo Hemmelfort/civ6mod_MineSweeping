@@ -61,7 +61,7 @@
     
     
     <Players>
-		<Row Domain="MineSweeper_Players" CivilizationType="CIVILIZATION_CHINA" LeaderType="LEADER_QIN" CivilizationName="LOC_CIVILIZATION_CHINA_NAME" CivilizationIcon="ICON_CIVILIZATION_CHINA" LeaderName="LOC_LEADER_QIN_NAME" LeaderIcon="ICON_LEADER_QIN" CivilizationAbilityName="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_NAME" CivilizationAbilityDescription="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_DESCRIPTION" CivilizationAbilityIcon="ICON_CIVILIZATION_CHINA" LeaderAbilityName="LOC_TRAIT_LEADER_FIRST_EMPEROR_NAME" LeaderAbilityDescription="LOC_TRAIT_LEADER_FIRST_EMPEROR_DESCRIPTION" LeaderAbilityIcon="ICON_LEADER_QIN"/>
+		<Row Domain="MineSweeper_Players" CivilizationType="CIVILIZATION_MINESWEEPERCHINA" LeaderType="LEADER_MINESWEEPER" CivilizationName="LOC_CIVILIZATION_MINESWEEPER_NAME" CivilizationIcon="ICON_CIVILIZATION_UNKNOWN" LeaderName="LOC_LEADER_MINESWEEPER_NAME" LeaderIcon="ICON_LEADER_DEFAULT" CivilizationAbilityName=" " CivilizationAbilityDescription=" " CivilizationAbilityIcon="ICON_CIVILIZATION_UNKNOWN" LeaderAbilityName=" " LeaderAbilityDescription=" " LeaderAbilityIcon="ICON_LEADER_DEFAULT"/>
     </Players>
     
     

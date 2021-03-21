@@ -47,6 +47,10 @@
             <File>ms_gameplay.xml</File>
 		</UpdateDatabase>
 		<UpdateText id="ms_text">
+            <Properties>
+                <LoadOrder>1000</LoadOrder>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
+            </Properties>
             <File>ms_text.xml</File>
 		</UpdateText>
 		
@@ -55,11 +59,13 @@
                 <LoadOrder>2019</LoadOrder>
                 <LuaContext>UnitFlagManager</LuaContext>
                 <LuaReplace>UI/UnitFlagManager.lua</LuaReplace>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
             </Properties>
 		</ReplaceUIScript>
 		<ImportFiles id="ms_ui_replace">
             <Properties>
                 <LoadOrder>2020</LoadOrder>
+                <RuleSet>RULESET_MINESWEEPER</RuleSet>
             </Properties>
             <File>UI/UnitFlagManager.xml</File>
             <File>UI/UnitFlagManager.lua</File>
