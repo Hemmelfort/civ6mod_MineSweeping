@@ -1,81 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <GameData>
-	<LocalizedText>
-		<Row Tag="LOC_MINESWEEPER_GAMEOVER_TITLE" Language="en_US">
-			<Text>Game Over</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_GAMEOVER_TEXT" Language="en_US">
-			<Text>Want to play another game?</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_REPLAY" Language="en_US">
-			<Text>New Game</Text>
-		</Row>
-		<Row Tag="LOC_DIG_BUTTON_TOOLTIP" Language="en_US">
-			<Text>Dig Here</Text>
-		</Row>
-		<Row Tag="LOC_MARK_BUTTON_TOOLTIP" Language="en_US">
-			<Text>Mark Here</Text>
-		</Row>
-		<Row Tag="LOC_TIPS_BUTTON_TOOLTIP" Language="en_US">
-			<Text>Tips</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_EXIT_TO_MAIN" Language="en_US">
-			<Text>Main Menu</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_WON_TITLE" Language="en_US">
-			<Text>You Won!</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_WON_TEXT" Language="en_US">
-			<Text>Congratulations!</Text>
-		</Row>
-		<Row Tag="LOC_MINE_ICON_REPRESENTS" Language="en_US">
+    <BaseGameText>
+        <Replace Tag="LOC_MINESWEEPER_GAMEOVER_TITLE">
+            <Text>Game Over</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_GAMEOVER_TEXT">
+            <Text>Want to play another game?</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_REPLAY">
+            <Text>New Game</Text>
+        </Replace>
+        <Replace Tag="LOC_DIG_BUTTON_TOOLTIP">
+            <Text>Dig Here</Text>
+        </Replace>
+        <Replace Tag="LOC_MARK_BUTTON_TOOLTIP">
+            <Text>Mark Here</Text>
+        </Replace>
+        <Replace Tag="LOC_TIPS_BUTTON_TOOLTIP">
+            <Text>Tips</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_EXIT_TO_MAIN">
+            <Text>Main Menu</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_WON_TITLE">
+            <Text>You Won!</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_WON_TEXT">
+            <Text>Congratulations!</Text>
+        </Replace>
+        <Replace Tag="LOC_MINE_ICON_REPRESENTS">
             <Text>[ICON_RESOURCE_OIL] represents mine.</Text>
-		</Row>
-		<Row Tag="LOC_LEADER_MINESWEEPER_NAME" Language="en_US">
+        </Replace>
+        <Replace Tag="LOC_LEADER_MINESWEEPER_NAME">
             <Text>MS Player</Text>
-		</Row>
-		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_NAME" Language="en_US">
+        </Replace>
+        <Replace Tag="LOC_CIVILIZATION_MINESWEEPER_NAME">
             <Text>MS</Text>
-		</Row>
-		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Language="en_US">
+        </Replace>
+        <Replace Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION">
             <Text>Civ for MineSweeper</Text>
-		</Row>
-		<Row Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER" Language="en_US">
+        </Replace>
+        <Replace Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER">
             <Text>The big question mark below is only temporary.</Text>
-		</Row>
-        <Replace Tag="LOC_IMPROVEMENT_FORT_NAME" Language="en_US">
+        </Replace>
+        <Replace Tag="LOC_IMPROVEMENT_FORT_NAME">
             <Text>Mark Mine</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_RICE_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_RICE_NAME">
             <Text>Mines nearby：1</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_WHEAT_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_WHEAT_NAME">
             <Text>Mines nearby：2</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_SUGAR_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_SUGAR_NAME">
             <Text>Mines nearby：3</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_SALT_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_SALT_NAME">
             <Text>Mines nearby：4</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_SILVER_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_SILVER_NAME">
             <Text>Mines nearby：5</Text>
         </Replace>
-        <Replace Tag="LOC_RESOURCE_COTTON_NAME" Language="en_US">
+        <Replace Tag="LOC_RESOURCE_COTTON_NAME">
             <Text>Mines nearby：6</Text>
         </Replace>
-        <Replace Tag="LOC_HISTORIC_LEADER_1" Language="en_US">
+        <Replace Tag="LOC_HISTORIC_LEADER_1">
             <Text>Others</Text>
         </Replace>
-        <Replace Tag="LOC_HISTORIC_LEADER_2" Language="en_US">
+        <Replace Tag="LOC_HISTORIC_LEADER_2">
             <Text>You</Text>
         </Replace>
-        <Replace Tag="LOC_HISTORIC_QUOTE_1" Language="en_US">
+        <Replace Tag="LOC_HISTORIC_QUOTE_1">
             <Text>Highest</Text>
         </Replace>
-        <Replace Tag="LOC_HISTORIC_QUOTE_2" Language="en_US">
+        <Replace Tag="LOC_HISTORIC_QUOTE_2">
             <Text>Lowest</Text>
         </Replace>
+    </BaseGameText>
+
+    <LocalizedText>
         <Replace Tag="LOC_HISTORIC_LEADER_1" Language="zh_Hans_CN">
             <Text>别人</Text>
         </Replace>
@@ -88,88 +91,87 @@
         <Replace Tag="LOC_HISTORIC_QUOTE_2" Language="zh_Hans_CN">
             <Text>分数最低</Text>
         </Replace>
-		<Row Tag="LOC_MINESWEEPER_WON_TITLE" Language="zh_Hans_CN">
-			<Text>成功</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_WON_TEXT" Language="zh_Hans_CN">
-			<Text>恭喜你获得胜利！</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_GAMEOVER_TITLE" Language="zh_Hans_CN">
-			<Text>游戏结束</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_GAMEOVER_TEXT" Language="zh_Hans_CN">
-			<Text>游戏结束，是否再来？</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_REPLAY" Language="zh_Hans_CN">
-			<Text>重新开始</Text>
-		</Row>
-		<Row Tag="LOC_DIG_BUTTON_TOOLTIP" Language="zh_Hans_CN">
-			<Text>挖</Text>
-		</Row>
-		<Row Tag="LOC_MARK_BUTTON_TOOLTIP" Language="zh_Hans_CN">
-			<Text>标记</Text>
-		</Row>
-		<Row Tag="LOC_TIPS_BUTTON_TOOLTIP" Language="zh_Hans_CN">
-			<Text>说明</Text>
-		</Row>
-		<Row Tag="LOC_MINESWEEPER_EXIT_TO_MAIN" Language="zh_Hans_CN">
-			<Text>返回主菜单</Text>
-		</Row>
-		<Row Tag="LOC_VICTORY_SWEPT_NAME" Language="zh_Hans_CN">
-			<Text>扫雷胜利</Text>
-		</Row>
-		<Row Tag="LOC_VICTORY_SWEPT_BLURB" Language="zh_Hans_CN">
-			<Text>恭喜你扫雷成功</Text>
-		</Row>
-		<Row Tag="LOC_VICTORY_SWEPT_DESCRIPTION" Language="zh_Hans_CN">
-			<Text>标记出所有的雷就能取胜</Text>
-		</Row>
-		<Row Tag="LOC_VICTORY_SWEPT_REQUIREMENT" Language="zh_Hans_CN">
-			<Text>标记出所有的雷就能取胜</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_MARK_PLOT_NAME" Language="zh_Hans_CN">
-			<Text>标记格位</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_MARK_PLOT_DESC" Language="zh_Hans_CN">
-			<Text>下面有雷，标记一下</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_DIG_PLOT_NAME" Language="zh_Hans_CN">
-			<Text>挖雷</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_DIG_PLOT_DESC" Language="zh_Hans_CN">
-			<Text>下面没雷，放心去挖</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_MS_TEST_NAME" Language="zh_Hans_CN">
-			<Text>测试</Text>
-		</Row>
-		<Row Tag="LOC_ACTION_MS_TEST_DESC" Language="zh_Hans_CN">
-			<Text>仅供测试使用</Text>
-		</Row>
-		<Row Tag="LOC_SCENARIO_MINESWEEPER_NAME" Language="zh_Hans_CN">
-			<Text>扫雷6</Text>
-		</Row>
-		<Row Tag="LOC_SCENARIO_MINESWEEPER_TOOLTIP" Language="zh_Hans_CN">
-			<Text>就是普普通通的扫雷</Text>
-		</Row>
-		<Row Tag="LOC_SCENARIO_MINESWEEPER_DESCRIPTIOIN" Language="zh_Hans_CN">
-			<Text>在一片大陆上有许多格子，有的下面埋有地雷，有的没有。与地雷相邻的格子会标有数字，数字意味着它周围一共有多少颗地雷。根据这个规则，你可以把所有的雷都标记出来，从而完成挑战。</Text>
-		</Row>
-		<Row Tag="LOC_MINE_ICON_REPRESENTS" Language="zh_Hans_CN">
+        <Replace Tag="LOC_MINESWEEPER_WON_TITLE" Language="zh_Hans_CN">
+            <Text>成功</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_WON_TEXT" Language="zh_Hans_CN">
+            <Text>恭喜你获得胜利！</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_GAMEOVER_TITLE" Language="zh_Hans_CN">
+            <Text>游戏结束</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_GAMEOVER_TEXT" Language="zh_Hans_CN">
+            <Text>游戏结束，是否再来？</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_REPLAY" Language="zh_Hans_CN">
+            <Text>重新开始</Text>
+        </Replace>
+        <Replace Tag="LOC_DIG_BUTTON_TOOLTIP" Language="zh_Hans_CN">
+            <Text>挖</Text>
+        </Replace>
+        <Replace Tag="LOC_MARK_BUTTON_TOOLTIP" Language="zh_Hans_CN">
+            <Text>标记</Text>
+        </Replace>
+        <Replace Tag="LOC_TIPS_BUTTON_TOOLTIP" Language="zh_Hans_CN">
+            <Text>说明</Text>
+        </Replace>
+        <Replace Tag="LOC_MINESWEEPER_EXIT_TO_MAIN" Language="zh_Hans_CN">
+            <Text>返回主菜单</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_NAME" Language="zh_Hans_CN">
+            <Text>扫雷胜利</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_BLURB" Language="zh_Hans_CN">
+            <Text>恭喜你扫雷成功</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_DESCRIPTION" Language="zh_Hans_CN">
+            <Text>标记出所有的雷就能取胜</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_REQUIREMENT" Language="zh_Hans_CN">
+            <Text>标记出所有的雷就能取胜</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_MARK_PLOT_NAME" Language="zh_Hans_CN">
+            <Text>标记格位</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_MARK_PLOT_DESC" Language="zh_Hans_CN">
+            <Text>下面有雷，标记一下</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_DIG_PLOT_NAME" Language="zh_Hans_CN">
+            <Text>挖雷</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_DIG_PLOT_DESC" Language="zh_Hans_CN">
+            <Text>下面没雷，放心去挖</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_MS_TEST_NAME" Language="zh_Hans_CN">
+            <Text>测试</Text>
+        </Replace>
+        <Replace Tag="LOC_ACTION_MS_TEST_DESC" Language="zh_Hans_CN">
+            <Text>仅供测试使用</Text>
+        </Replace>
+        <Replace Tag="LOC_SCENARIO_MINESWEEPER_NAME" Language="zh_Hans_CN">
+            <Text>扫雷6</Text>
+        </Replace>
+        <Replace Tag="LOC_SCENARIO_MINESWEEPER_TOOLTIP" Language="zh_Hans_CN">
+            <Text>就是普普通通的扫雷</Text>
+        </Replace>
+        <Replace Tag="LOC_SCENARIO_MINESWEEPER_DESCRIPTIOIN" Language="zh_Hans_CN">
+            <Text>在一片大陆上有许多格子，有的下面埋有地雷，有的没有。与地雷相邻的格子会标有数字，数字意味着它周围一共有多少颗地雷。根据这个规则，你可以把所有的雷都标记出来，从而完成挑战。</Text>
+        </Replace>
+        <Replace Tag="LOC_MINE_ICON_REPRESENTS" Language="zh_Hans_CN">
             <Text>[ICON_RESOURCE_OIL] 表示地雷</Text>
-		</Row>
-		<Row Tag="LOC_LEADER_MINESWEEPER_NAME" Language="zh_Hans_CN">
+        </Replace>
+        <Replace Tag="LOC_LEADER_MINESWEEPER_NAME" Language="zh_Hans_CN">
             <Text>扫雷玩家</Text>
-		</Row>
-		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_NAME" Language="zh_Hans_CN">
+        </Replace>
+        <Replace Tag="LOC_CIVILIZATION_MINESWEEPER_NAME" Language="zh_Hans_CN">
             <Text>扫雷文明</Text>
-		</Row>
-		<Row Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Language="zh_Hans_CN">
+        </Replace>
+        <Replace Tag="LOC_CIVILIZATION_MINESWEEPER_DESCRIPTION" Language="zh_Hans_CN">
             <Text>专门用来扫雷的文明</Text>
-		</Row>
-		<Row Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER" Language="zh_Hans_CN">
+        </Replace>
+        <Replace Tag="LOC_LOADING_INFO_LEADER_MINESWEEPER" Language="zh_Hans_CN">
             <Text>下面这个大问号只是暂时的。</Text>
-		</Row>
-		
+        </Replace>
         <Replace Tag="LOC_IMPROVEMENT_FORT_NAME" Language="zh_Hans_CN">
             <Text>标记地雷</Text>
         </Replace>
@@ -191,6 +193,5 @@
         <Replace Tag="LOC_RESOURCE_COTTON_NAME" Language="zh_Hans_CN">
             <Text>周围地雷数：6</Text>
         </Replace>
-
-	</LocalizedText>
+    </LocalizedText>
 </GameData>
