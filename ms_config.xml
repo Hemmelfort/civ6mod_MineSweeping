@@ -33,10 +33,10 @@
     </RulesetDomainOverrides>
     
     <MapDomainOverrides>
-        <Row Map="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map" ParameterId="MapSize" Domain="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map"/>
+        <Row Map="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map" ParameterId="MapSize" Domain="ms_map_01"/>
     </MapDomainOverrides>
     <MapSizes>
-        <Row Domain="{a3738654-7f2d-11eb-a01b-408d5ca2b12e}ms_map.Civ6Map" MapSizeType="MAPSIZE_DUEL" Name="LOC_MAPSIZE_DUEL_NAME" Description="LOC_MAPSIZE_DUEL_DESCRIPTION" MinPlayers="1" MaxPlayers="1" DefaultPlayers="1" MinCityStates="0" MaxCityStates="0" DefaultCityStates="0" SortIndex="10"/>
+        <Row Domain="ms_map_01" MapSizeType="MAPSIZE_DUEL" Name="LOC_MAPSIZE_DUEL_NAME" Description="LOC_MAPSIZE_DUEL_DESCRIPTION" MinPlayers="1" MaxPlayers="1" DefaultPlayers="1" MinCityStates="0" MaxCityStates="0" DefaultCityStates="0" SortIndex="10"/>
     </MapSizes>
     
     <!--把一些选项隐藏起来-->
@@ -46,6 +46,9 @@
 		<Row ParameterId="Temperature" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER" />
 		<Row ParameterId="Resources" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER" />
     </ParameterDependencies>
+    <ParameterCriteria>
+        <Row ParameterId="VICTORY_SWEPT" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER"/>
+    </ParameterCriteria>
     <ConfigurationUpdates>
 		<Row SourceGroup="Game" SourceId="RULESET" SourceValue="RULESET_MINESWEEPER" 
             TargetGroup="Game" TargetId="NO_DUPLICATE_LEADERS" TargetValue="0" Hash="0" />
@@ -53,15 +56,12 @@
             TargetGroup="Game" TargetId="NO_DUPLICATE_CIVILIZATIONS" TargetValue="0" Hash="0" />
     </ConfigurationUpdates>
     
-    <!--此种胜利方式要在扫雷模式下才会显示出来-->
-    <ParameterCriteria>
-        <Row ParameterId="VICTORY_SWEPT" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="NotEquals" ConfigurationValue="RULESET_MINESWEEPER"/>
-    </ParameterCriteria>
     
     
     
     <Players>
 		<Row Domain="MineSweeper_Players" CivilizationType="CIVILIZATION_MINESWEEPERCHINA" LeaderType="LEADER_MINESWEEPER" CivilizationName="LOC_CIVILIZATION_MINESWEEPER_NAME" CivilizationIcon="ICON_CIVILIZATION_UNKNOWN" LeaderName="LOC_LEADER_MINESWEEPER_NAME" LeaderIcon="ICON_LEADER_DEFAULT" CivilizationAbilityName=" " CivilizationAbilityDescription=" " CivilizationAbilityIcon="ICON_CIVILIZATION_UNKNOWN" LeaderAbilityName=" " LeaderAbilityDescription=" " LeaderAbilityIcon="ICON_LEADER_DEFAULT"/>
+		<Row Domain="MineSweeper_Players" CivilizationType="CIVILIZATION_CHINA" LeaderType="LEADER_QIN" CivilizationName="LOC_CIVILIZATION_CHINA_NAME" CivilizationIcon="ICON_CIVILIZATION_CHINA" LeaderName="LOC_LEADER_QIN_NAME" LeaderIcon="ICON_LEADER_QIN" CivilizationAbilityName="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_NAME" CivilizationAbilityDescription="LOC_TRAIT_CIVILIZATION_DYNASTIC_CYCLE_DESCRIPTION" CivilizationAbilityIcon="ICON_CIVILIZATION_CHINA" LeaderAbilityName="LOC_TRAIT_LEADER_FIRST_EMPEROR_NAME" LeaderAbilityDescription="LOC_TRAIT_LEADER_FIRST_EMPEROR_DESCRIPTION" LeaderAbilityIcon="ICON_LEADER_QIN"/>
     </Players>
     
     

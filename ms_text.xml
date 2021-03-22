@@ -64,6 +64,18 @@
         <Replace Tag="LOC_RESOURCE_COTTON_NAME">
             <Text>Mines nearby：6</Text>
         </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_NAME">
+            <Text>Swept Victory</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_BLURB">
+            <Text>Congratulations!</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_DESCRIPTION">
+            <Text>Mark all mines to win</Text>
+        </Replace>
+        <Replace Tag="LOC_VICTORY_SWEPT_REQUIREMENT">
+            <Text>Mark all mines to win.</Text>
+        </Replace>
         <Replace Tag="LOC_HISTORIC_LEADER_1">
             <Text>Others</Text>
         </Replace>

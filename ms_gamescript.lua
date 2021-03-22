@@ -1,5 +1,12 @@
 
 
+---------------------------------------
+-- 
+---------------------------------------
+
+---------------------------------------
+-- 
+---------------------------------------
 
 local m_iFeatureForest = GameInfo.Features['FEATURE_FOREST'].Index
 local m_iResourceMine = GameInfo.Resources['RESOURCE_URANIUM'].Index
@@ -15,15 +22,17 @@ local m_tNumberToResource = {
     [6] = GameInfo.Resources['RESOURCE_COTTON'].Index,
 }
 
-local m_sUnitReferee = "UNIT_WARRIOR"
+local m_sUnitReferee = "UNIT_WARRIOR"   --当裁判出现时，玩家获胜
 local m_iLocalPlayer = Game.GetLocalPlayer()
 
-local m_AmountTable = {}
-local m_bFirstTry = true
-local m_iMinesRemain = 0
+local m_NumbersTable = {}   --记录格位周围的地雷数，索引为iPlotIndex
+local m_bFirstTry = true    --是不是第一次下铲（保证第一次不能挖到雷）
+local m_iMinesRemain = 0    --全图剩余未标记的地雷数
 
 
-
+---------------------------------------
+-- 判断table中是否含有某项
+---------------------------------------
 function IsIncluded(tab, value)
     for _, v in ipairs(tab) do
         if value == v then
@@ -35,6 +44,9 @@ function IsIncluded(tab, value)
 end
 
 
+---------------------------------------
+-- 数字所对应的资源
+---------------------------------------
 function GetResourceByNumber(num)
     local res = m_tNumberToResource[num]
     if (res ~= nil) then
@@ -45,13 +57,18 @@ function GetResourceByNumber(num)
 end
 
 
-
+---------------------------------------
+-- 测试用的
+---------------------------------------
 function MSTest()
     --Detonate()
     print('ms test in gameplay script.')
 end
 
 
+---------------------------------------
+-- 如果挖到的是空白（不含雷、不含数字），那就连带把周边其他空白也揪出来
+---------------------------------------
 function RevealEmptyPlotsNearby(pPlot)
     local tNeighborPlots = Map.GetAdjacentPlots(pPlot:GetX(), pPlot:GetY())
     for _, plot in ipairs(tNeighborPlots) do
@@ -63,6 +80,9 @@ function RevealEmptyPlotsNearby(pPlot)
 end
 
 
+---------------------------------------
+-- 游戏初始化（硬开始）
+---------------------------------------
 function InitializeNewGame()
     print('InitializeNewGame in MineSweeper.')
     
@@ -80,9 +100,12 @@ function InitializeNewGame()
 end
 
 
+---------------------------------------
+-- 重新开始一盘游戏（软开始）
+---------------------------------------
 function Replay()
     m_bFirstTry = true
-    m_AmountTable = {}
+    m_NumbersTable = {}
     m_iMinesRemain = 0
     
     -- 清除改良设施、资源，然后种树
@@ -117,13 +140,16 @@ end
 
 
 
+---------------------------------------
+-- 在一个格位里面放入地雷，影响到周围格位的数字
+---------------------------------------
 function AddMine(pPlot)
     if pPlot:IsWater() then
         return
     end
     
     ResourceBuilder.SetResourceType(pPlot, m_iResourceMine, 1)
-    m_AmountTable[pPlot:GetIndex()] = nil   --有雷的格位不能有数字
+    m_NumbersTable[pPlot:GetIndex()] = nil   --有雷的格位不能有数字
     m_iMinesRemain = m_iMinesRemain + 1
     
     -- 在地雷周围记录数字
@@ -133,17 +159,20 @@ function AddMine(pPlot)
         and (plot:GetResourceType() == -1)
         then
             local i = plot:GetIndex()
-            local v = m_AmountTable[i]
+            local v = m_NumbersTable[i]
             if (v == nil) then
-                m_AmountTable[i] = 1
+                m_NumbersTable[i] = 1
             else
-                m_AmountTable[i] = v + 1
+                m_NumbersTable[i] = v + 1
             end
         end
     end
 end
 
 
+---------------------------------------
+-- 对全图布雷，可以设置禁雷区
+---------------------------------------
 function AddMines(tInvalidPlots : table)
     local tContinents = Map.GetContinentsInUse()
     for i, eContinent in ipairs(tContinents) do
@@ -159,6 +188,9 @@ function AddMines(tInvalidPlots : table)
 end
 
 
+---------------------------------------
+-- 挖一个格位
+---------------------------------------
 function DigPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
     if (pPlot == nil) or pPlot:IsWater() 
@@ -194,7 +226,7 @@ function DigPlot(iX, iY)
     
     -- 如果有数字就显示出来，没有则清除周围其他空白格位
     TerrainBuilder.SetFeatureType(pPlot, -1)
-    local num = m_AmountTable[pPlot:GetIndex()]
+    local num = m_NumbersTable[pPlot:GetIndex()]
     if (num ~= nil) then
         local res = GetResourceByNumber(num)
         ResourceBuilder.SetResourceType(pPlot, res, 1)
@@ -204,6 +236,9 @@ function DigPlot(iX, iY)
 end
 
 
+---------------------------------------
+-- 标记一个格位
+---------------------------------------
 function MarkPlot(iX, iY)
     local pPlot = Map.GetPlot(iX, iY)
     if (pPlot ~= nil) then
@@ -220,6 +255,9 @@ function MarkPlot(iX, iY)
 end
 
 
+---------------------------------------
+-- 引爆地雷，游戏结束
+---------------------------------------
 function Detonate()
     local tContinents = Map.GetContinentsInUse()
     for i, eContinent in ipairs(tContinents) do
@@ -238,6 +276,9 @@ function Detonate()
 end
 
 
+---------------------------------------
+-- 判断是否应该获胜
+---------------------------------------
 function CheckVictory()
     -- 先确定所有格位均开发完毕
     local tContinents = Map.GetContinentsInUse()
@@ -274,11 +315,17 @@ function CheckVictory()
 end
 
 
+---------------------------------------
+-- 获取剩余未标记的雷数（主要给UI界面用来显示）
+---------------------------------------
 function GetMinesRemain()
     return m_iMinesRemain
 end
 
 
+---------------------------------------
+-- 恢复单位移动力
+---------------------------------------
 function RestoreMovement(iPlayerID, iUnitID)
     local pUnit = UnitManager.GetUnit(iPlayerID, iUnitID);
     UnitManager.RestoreMovement(pUnit)

@@ -54,14 +54,6 @@
         <Row Era="ERA_INDUSTRIAL" Unit="UNIT_BUILDER"/>
 	</MajorStartingUnits>
     
-    <!--Victory-->
-    <Victories>
-        <Update>
-            <Set EnabledByDefault="0"/>
-        </Update>
-        <Row VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Blurb="LOC_VICTORY_SWEPT_BLURB" Description="LOC_VICTORY_SWEPT_DESCRIPTION" RequirementSetId="REQSET_VICTORY_SWEPT" CriticalPercentage="10" OneMoreTurn="1" Icon="ICON_VICTORY_SWEPT"/>
-    </Victories>
-
 
     <Tags>
         <Row Tag="CLASS_SAPPER" Vocabulary="ABILITY_CLASS"/>
@@ -73,16 +65,6 @@
 	<UnitAbilities>
 		<Row UnitAbilityType="ABL_MOVE_FASTER" Name="快速移动" Description="减少移动力惩罚" Inactive="false" ShowFloatTextWhenEarned="false"/>
 	</UnitAbilities>
-	
-	<Improvement_ValidBuildUnits>
-        <Delete UnitType="UNIT_BUILDER"/>
-	</Improvement_ValidBuildUnits>
-	<UnitOperations>
-        <Update>
-            <Set VisibleInUI="0"/>
-            <Where OperationType="UNITOPERATION_REMOVE_IMPROVEMENT"/>
-        </Update>
-	</UnitOperations>
 	
     <UnitAbilityModifiers>
 		<Row>
@@ -112,6 +94,26 @@
         </Row>
     </ModifierArguments>
     
+
+	<Improvement_ValidBuildUnits>
+        <Delete UnitType="UNIT_BUILDER"/>
+	</Improvement_ValidBuildUnits>
+	<UnitOperations>
+        <Update>
+            <Set VisibleInUI="0"/>
+            <Where OperationType="UNITOPERATION_REMOVE_IMPROVEMENT"/>
+        </Update>
+	</UnitOperations>
+	
+
+
+    <!--Victory-->
+    <Victories>
+        <Update>
+            <Set EnabledByDefault="0"/>
+        </Update>
+        <Row VictoryType="VICTORY_SWEPT" Name="LOC_VICTORY_SWEPT_NAME" Blurb="LOC_VICTORY_SWEPT_BLURB" Description="LOC_VICTORY_SWEPT_DESCRIPTION" RequirementSetId="REQSET_VICTORY_SWEPT" CriticalPercentage="10" OneMoreTurn="1" Icon="ICON_VICTORY_SWEPT"/>
+    </Victories>
 
     <!-- RequirementSets -->
     <RequirementSets>
